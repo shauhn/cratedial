@@ -189,7 +189,7 @@ genre=store.get("cd-genre")||"any"; if(!GENRES.some(g=>g.id===genre))genre="any"
 const SOURCES={K:{name:"KCRW Eclectic24",short:"KCRW",cls:"k",c:"var(--kcrw)"},G:{name:"Gilles Peterson · Worldwide FM",short:"WWFM",cls:"w",c:"var(--wwfm)"},S:{name:"Somewhere Soul · New Music Friday",short:"Somewhere Soul",cls:"s",c:"var(--ss)"},C:{name:"Club Carter Radio",short:"Club Carter",cls:"c",c:"var(--cc)"},M:{name:"Mark Torkington",short:"Torkington",cls:"m",c:"var(--mt)"},O:{name:"Oleg Tsoy · Rare Samples & Songs",short:"Oleg Samples",cls:"o",c:"var(--ot)"},H:{name:"Mayer Hawthorne · Wine & Vinyl Hour",short:"Wine & Vinyl",cls:"h",c:"var(--wv)"}};
 let on=new Set(["K","G","S","C","M","O","H"]);
 try{const v=JSON.parse(store.get("cd-on"));if(Array.isArray(v)&&v.length&&v.every(x=>SOURCES[x]))on=new Set(v)}catch(e){}
-$("freq").innerHTML=Object.entries(SOURCES).map(([k,v])=>`<b class="${v.cls}">${v.name}</b> · ${window.CRATE.span[k]||""}`).join("<br>")+"<br>"+POOL.length+" tracks in the crate · updated "+window.CRATE.updated+" · <a href=\"radio.html\">Open the radio</a>";
+$("freq").innerHTML=Object.entries(SOURCES).map(([k,v])=>`<b class="${v.cls}">${v.name}</b> · ${window.CRATE.span[k]||""}`).join("<br>")+"<br>"+POOL.length+" tracks in the crate · updated "+window.CRATE.updated+"";
 function srcLabel(t){return (t.s==="K"||t.s==="O"||t.s==="H")?SOURCES[t.s].name:SOURCES[t.s].name+", "+t.show}
 function renderStations(){
   $("stations").innerHTML="";
